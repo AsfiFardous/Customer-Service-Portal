@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title> Customer Portal </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div>
+    <div style="display: inline-block; float: right">
+        <h4 style="margin-bottom: -5px">Details</h4>
+        <div>
+            <p>Status: <span th:text="${case.getStatus()}"></span></p>
+            <p>Priority: <span th:text="${case.getPriority()}"></span></p>
+            <p>Product: <span th:text="${case.getProduct()}"></span></p>
+            <p>Product Group: <span th:text="${case.getProductGroup()}"></span></p>
+            <p>Impact: <span th:text="${case.getImpact()}"></span></p>
+            <p>Severity: <span th:text="${case.getSeverity()}"></span></p>
+            <p>VIP: <span th:text="${case.getVIP()}"></span></p>
+        </div>
+        <div>
+            <h4 style="margin-bottom: -5px">Dates</h4>
+            <div>
+                <p> Created Date: <span th:text="${case.getCreatedDate()}"></span></p>
+                <p> Last Modified Date: <span th:text="${case.getLastModifiedDate()}"></span></p>
+            </div>
+        </div>
+
+        <div>
+            <h4 style="margin-bottom: -5px">Owner</h4>
+            <div>
+                <p>Name: <span th:text="${case.getOwner().getFirstName()}"></span> <span
+                        th:text="${case.getContact().getLastName()}"></span></p>
+            </div>
+        </div>
+
+
+        <div>
+            <h4 style="margin-bottom: -5px">Contact</h4>
+            <div>
+                <p>Name: <span th:text="${case.getContact().getFirstName()}"></span> <span
+                        th:text="${case.getContact().getLastName()}"></span>
+                <p/>
+                <p>Phone: <span th:text="${case.getContact().getPhone()}"></span></p>
+                <p>Email: <span th:text="${case.getContact().getEmail()}"></span></p>
+            </div>
+        </div>
+
+    </div>
+    <div style="display: inline-block">
+        <div>
+            <h4>Description</h4>
+            <div>
+                <p th:utext="${case.getDescription()}"/>
+            </div>
+        </div>
+
+        <div>
+            <h4>Comments</h4>
+            <div th:each="comment: ${case.getComments()}">
+                <p><span style="color:Blue;" th:text="${comment.getCreatedBy()}"></span> added a comment- <span
+                        style="color:#7f8484;" th:text="${comment.getCommentDate()}"></span></p>
+                <p style="padding-left: 15px; margin-top: -11px; margin-bottom: 25px;"
+                   th:utext="${comment.getCommentBody()}"/>
+            </div>
+        </div>
+
+        <form th:action="@{/add-comment}" method="post">
+            <input type="hidden" name="caseId" th:value="${case.getCaseNumber()}"/>
+            <p><strong>Your Name: </strong> <input rows="3" cols="20" type="text" name="createdby" required/></p>
+            <p><strong>Comment: </strong> <textarea rows="7" cols="60" style="margin-left: 10px;" name="comment"
+                                                    required></textarea></p>
+            <p><input style="margin-left: 87px;" type="submit" value="Submit"/></p>
+        </form>
+
+    </div>
+</div>
+
+
+</body>
+</html>

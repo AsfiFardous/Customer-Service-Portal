@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title> Customer Portal </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+    <div th:each="case: ${cases}">
+        <h3>
+            Case-<span th:text="${case.getCaseNumber()}"></span> :
+            <a th:href="'/index?casenumber='+${case.getCaseNumber()}" th:text="${case.getSubject()}"> </a>
+
+        </h3>
+    </div>
+<div>
+    <button type="submit">Add Case</button>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title> Customer Portal </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+    <div>
+        <form th:action="@{/add-case}" method="post">
+            <p><strong>Case Name: </strong> <input rows="3" cols="40" type="text" name="subject" required/></p>
+            <p><strong>Case Description: </strong> <textarea rows="7" cols="60" type="text" name="description" required/> </textarea></p>
+            <p><input style="margin-left: 87px;" type="submit" value="Submit"/></p>
+        </form>
+    </div>
+</body>
+</html>
