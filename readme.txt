@@ -1,4 +1,4 @@
-CDK Global Customer Portal Technical Test
+Customer Service Portal 
 
 The app has been developed with spring boot framework.
 The app allows to add a comment to an existing case. The case data is loaded from a predefined case.json file. Upon saving the comment the app updates the data file.
